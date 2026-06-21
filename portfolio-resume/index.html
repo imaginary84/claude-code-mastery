@@ -1,0 +1,549 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>개발자 포트폴리오 - 웹 이력서</title>
+  <meta name="description" content="현대적이고 반응형 개발자 웹 이력서">
+  <meta property="og:title" content="개발자 포트폴리오">
+  <meta property="og:description" content="현대적이고 반응형 개발자 웹 이력서">
+  <meta property="og:type" content="website">
+
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <!-- Tailwind Config for Dark Mode -->
+  <script>
+    tailwind.config = {
+      darkMode: 'class'
+    }
+  </script>
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="css/custom.css">
+  <style>
+    * { font-family: 'Inter', sans-serif; }
+    a:focus { outline: none; }
+    button:focus { outline: none; }
+  </style>
+</head>
+<body class="bg-zinc-50 dark:bg-zinc-950 text-zinc-900 dark:text-zinc-100 transition-colors">
+
+  <!-- Header / Navigation -->
+  <header class="fixed top-0 left-0 right-0 z-50 bg-zinc-50/80 dark:bg-zinc-950/80 backdrop-blur-md transition-all duration-300" id="header">
+    <nav class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-4 flex justify-between items-center">
+      <!-- Logo -->
+      <div class="text-2xl font-bold bg-gradient-to-r from-violet-600 to-fuchsia-500 bg-clip-text text-transparent">
+        Portfolio
+      </div>
+
+      <!-- Desktop Menu -->
+      <ul class="hidden md:flex gap-8 items-center">
+        <li><a href="#hero" class="hover:text-violet-600 dark:hover:text-violet-400 transition nav-link focus:outline-none">홈</a></li>
+        <li><a href="#about" class="hover:text-violet-600 dark:hover:text-violet-400 transition nav-link focus:outline-none">소개</a></li>
+        <li><a href="#skills" class="hover:text-violet-600 dark:hover:text-violet-400 transition nav-link focus:outline-none">기술</a></li>
+        <li><a href="#projects" class="hover:text-violet-600 dark:hover:text-violet-400 transition nav-link focus:outline-none">프로젝트</a></li>
+        <li><a href="#experience" class="hover:text-violet-600 dark:hover:text-violet-400 transition nav-link focus:outline-none">경력</a></li>
+        <li><a href="#contact" class="hover:text-violet-600 dark:hover:text-violet-400 transition nav-link focus:outline-none">연락</a></li>
+      </ul>
+
+      <!-- Dark Mode Toggle + Mobile Menu -->
+      <div class="flex gap-4 items-center">
+        <button id="theme-toggle" class="p-2 rounded-lg bg-zinc-200 dark:bg-zinc-700 hover:bg-zinc-300 dark:hover:bg-zinc-600 transition">
+          <svg class="w-5 h-5 hidden dark:block" fill="currentColor" viewBox="0 0 20 20">
+            <path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z"></path>
+          </svg>
+          <svg class="w-5 h-5 block dark:hidden" fill="currentColor" viewBox="0 0 20 20">
+            <path fill-rule="evenodd" d="M10 2a1 1 0 011 1v1a1 1 0 11-2 0V3a1 1 0 011-1zm4 8a4 4 0 11-8 0 4 4 0 018 0zm-.464 4.536l.707.707a1 1 0 001.414-1.414l-.707-.707a1 1 0 00-1.414 1.414zm2.121-10.607a1 1 0 010 1.414l-.707.707a1 1 0 11-1.414-1.414l.707-.707a1 1 0 011.414 0zM17 11a1 1 0 100-2h-1a1 1 0 100 2h1zm-7 4a1 1 0 011 1v1a1 1 0 11-2 0v-1a1 1 0 011-1zM5.05 6.464A1 1 0 106.464 5.05l-.707-.707a1 1 0 00-1.414 1.414l.707.707zm5.657-9.193a1 1 0 00-1.414 0l-.707.707A1 1 0 005.05 6.464l.707-.707a1 1 0 001.414-1.414zM3 11a1 1 0 100-2H2a1 1 0 100 2h1z" clip-rule="evenodd"></path>
+          </svg>
+        </button>
+
+        <!-- Hamburger Menu -->
+        <button id="mobile-menu-btn" class="md:hidden p-2 rounded-lg bg-zinc-200 dark:bg-zinc-700">
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+          </svg>
+        </button>
+      </div>
+    </nav>
+
+    <!-- Mobile Menu -->
+    <div id="mobile-menu" class="hidden md:hidden px-4 pb-4 bg-zinc-50/95 dark:bg-zinc-900/95 backdrop-blur-md">
+      <ul class="flex flex-col gap-4">
+        <li><a href="#hero" class="block py-2 hover:text-violet-600 dark:hover:text-violet-400">홈</a></li>
+        <li><a href="#about" class="block py-2 hover:text-violet-600 dark:hover:text-violet-400">소개</a></li>
+        <li><a href="#skills" class="block py-2 hover:text-violet-600 dark:hover:text-violet-400">기술</a></li>
+        <li><a href="#projects" class="block py-2 hover:text-violet-600 dark:hover:text-violet-400">프로젝트</a></li>
+        <li><a href="#experience" class="block py-2 hover:text-violet-600 dark:hover:text-violet-400">경력</a></li>
+        <li><a href="#contact" class="block py-2 hover:text-violet-600 dark:hover:text-violet-400">연락</a></li>
+      </ul>
+    </div>
+  </header>
+
+  <main class="pt-20">
+    <!-- Hero Section -->
+    <section id="hero" class="min-h-screen flex items-center justify-center bg-gradient-to-br from-zinc-50 via-violet-50 to-fuchsia-50 dark:from-zinc-950 dark:via-violet-950/20 dark:to-zinc-900 px-4 py-20">
+      <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
+        <div class="grid md:grid-cols-2 gap-20 items-center">
+          <!-- Left Column: Text & Buttons -->
+          <div>
+            <!-- Name & Title -->
+            <h1 class="text-5xl md:text-6xl font-bold mb-6 bg-gradient-to-r from-violet-600 via-fuchsia-500 to-pink-500 dark:from-violet-400 dark:via-fuchsia-400 dark:to-cyan-300 bg-clip-text text-transparent">
+              웹 개발자
+            </h1>
+
+            <!-- Description -->
+            <p class="text-lg md:text-xl text-zinc-600 dark:text-zinc-300 mb-6 leading-relaxed">
+              현대적이고 반응형 웹 애플리케이션을 만드는 개발자입니다. HTML5, CSS3, JavaScript를 활용하여 사용자 중심의 인터페이스를 설계하고 구현합니다. 협력적인 팀 환경에서 새로운 기술을 학습하며 지속적으로 성장하고 있습니다.
+            </p>
+
+            <!-- CTA Buttons -->
+            <div class="flex flex-col sm:flex-row gap-4 mb-8">
+              <a href="#projects" class="px-8 py-3 bg-violet-600 text-white rounded-lg font-semibold hover:bg-violet-700 transition text-center">
+                프로젝트 보기
+              </a>
+              <a href="#contact" class="px-8 py-3 border-2 border-violet-600 text-violet-600 dark:text-violet-400 dark:border-violet-400 rounded-lg font-semibold hover:bg-violet-50 dark:hover:bg-zinc-800 transition text-center">
+                연락하기
+              </a>
+            </div>
+
+            <!-- SNS Links -->
+            <div class="flex gap-4 flex-wrap">
+              <a href="https://github.com" target="_blank" rel="noopener" title="GitHub" class="p-3 rounded-full bg-zinc-200 dark:bg-zinc-700 hover:bg-violet-600 hover:text-white dark:hover:bg-violet-600 transition">
+                <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
+                  <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v 3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
+                </svg>
+              </a>
+              <a href="https://youtube.com" target="_blank" rel="noopener" title="YouTube" class="p-3 rounded-full bg-zinc-200 dark:bg-zinc-700 hover:bg-violet-600 hover:text-white dark:hover:bg-violet-600 transition">
+                <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
+                  <path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/>
+                </svg>
+              </a>
+              <a href="https://instagram.com" target="_blank" rel="noopener" title="Instagram" class="p-3 rounded-full bg-zinc-200 dark:bg-zinc-700 hover:bg-violet-600 hover:text-white dark:hover:bg-violet-600 transition">
+                <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
+                  <path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm0 2.25c2.697 0 3.013.01 4.077.059 1.063.049 1.79.218 2.427.465.637.247 1.181.578 1.71 1.107.53.529.86 1.073 1.107 1.71.247.637.416 1.364.465 2.427.049 1.064.059 1.38.059 4.077 0 2.697-.01 3.013-.059 4.077-.049 1.063-.218 1.79-.465 2.427-.247.637-.578 1.181-1.107 1.71-.529.53-1.073.86-1.71 1.107-.637.247-1.364.416-2.427.465-1.064.049-1.38.059-4.077.059-2.697 0-3.013-.01-4.077-.059-1.063-.049-1.79-.218-2.427-.465-.637-.247-1.181-.578-1.71-1.107-.53-.529-.86-1.073-1.107-1.71-.247-.637-.416-1.364-.465-2.427C2.26 15.013 2.25 14.697 2.25 12c0-2.697.01-3.013.059-4.077.049-1.063.218-1.79.465-2.427.247-.637.578-1.181 1.107-1.71.529-.53 1.073-.86 1.71-1.107.637-.247 1.364-.416 2.427-.465 1.064-.049 1.38-.059 4.077-.059zm0 3.834a5.916 5.916 0 100 11.832 5.916 5.916 0 000-11.832zm0 9.75a3.834 3.834 0 110-7.668 3.834 3.834 0 010 7.668zm7.668-10.034a1.384 1.384 0 11-2.768 0 1.384 1.384 0 012.768 0z"/>
+                </svg>
+              </a>
+              <a href="https://linkedin.com" target="_blank" rel="noopener" title="LinkedIn" class="p-3 rounded-full bg-zinc-200 dark:bg-zinc-700 hover:bg-violet-600 hover:text-white dark:hover:bg-violet-600 transition">
+                <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
+                  <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.475-2.236-1.986-2.236-1.081 0-1.722.722-2.004 1.418-.103.249-.129.597-.129.946v5.441h-3.554s.05-8.81 0-9.728h3.554v1.375c.43-.664 1.199-1.61 2.920-1.61 2.134 0 3.732 1.39 3.732 4.377v5.586zM5.337 9.433c-1.144 0-1.915-.759-1.915-1.71 0-.955.77-1.71 1.954-1.71 1.184 0 1.915.755 1.94 1.71 0 .951-.756 1.71-1.979 1.71zm1.581 11.019H3.716V9.724h3.202v10.728zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
+                </svg>
+              </a>
+              <a href="https://twitter.com" target="_blank" rel="noopener" title="Twitter" class="p-3 rounded-full bg-zinc-200 dark:bg-zinc-700 hover:bg-violet-600 hover:text-white dark:hover:bg-violet-600 transition">
+                <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
+                  <path d="M23.953 4.57a10 10 0 01-2.825.775 4.958 4.958 0 002.163-2.723c-.951.555-2.005.959-3.127 1.184a4.92 4.92 0 00-8.384 4.482C7.69 8.095 4.067 6.13 1.64 3.162a4.822 4.822 0 00-.666 2.475c0 1.71.87 3.213 2.188 4.096a4.904 4.904 0 01-2.228-.616v.06a4.923 4.923 0 003.946 4.827 4.996 4.996 0 01-2.212.085 4.936 4.936 0 004.604 3.417 9.867 9.867 0 01-6.102 2.105c-.39 0-.779-.023-1.17-.067a14.028 14.028 0 007.557 2.209c9.053 0 13.998-7.496 13.998-13.985 0-.21 0-.42-.015-.63A9.935 9.935 0 0024 4.59z"/>
+                </svg>
+              </a>
+            </div>
+          </div>
+
+          <!-- Right Column: Profile Image -->
+          <div class="flex justify-center">
+            <div class="w-64 h-64 rounded-full overflow-hidden p-1 bg-gradient-to-br from-violet-400 via-fuchsia-500 to-cyan-400 shadow-2xl">
+              <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=600&h=600&fit=crop" alt="프로필 사진" class="w-full h-full rounded-full object-cover">
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="py-20 px-4 bg-white dark:bg-zinc-900">
+      <div class="max-w-6xl mx-auto">
+        <h2 class="text-4xl font-bold mb-12 text-center">소개</h2>
+        <div class="grid md:grid-cols-2 gap-12 items-center">
+          <!-- Text -->
+          <div class="space-y-4 fade-in">
+            <p class="text-lg text-zinc-700 dark:text-zinc-300">
+              안녕하세요! 저는 현대적이고 반응형 웹 애플리케이션 개발에 열정을 가진 웹 개발자입니다. HTML5, CSS3, JavaScript를 활용하여 사용자 중심의 인터페이스를 설계하고 구현하는 것을 좋아합니다.
+            </p>
+            <p class="text-lg text-zinc-700 dark:text-zinc-300">
+              협력적인 팀 환경에서 일하며, 새로운 기술 학습과 지속적인 개선에 주력하고 있습니다. 사용자 경험(UX) 개선과 성능 최적화에 깊은 관심을 가지고 있습니다.
+            </p>
+            <p class="text-lg text-zinc-700 dark:text-zinc-300">
+              여러 프로젝트에서 프론트엔드 개발을 담당했으며, 반응형 디자인과 접근성을 중심으로 고품질 코드 작성을 지향합니다.
+            </p>
+          </div>
+
+          <!-- Stats -->
+          <div class="grid grid-cols-2 gap-6 fade-in">
+            <div class="bg-zinc-50 dark:bg-zinc-800 p-8 rounded-xl shadow-lg text-center">
+              <div class="text-4xl font-bold text-violet-600 dark:text-violet-400">50+</div>
+              <div class="text-zinc-600 dark:text-zinc-400 mt-2">완료된 프로젝트</div>
+            </div>
+            <div class="bg-zinc-50 dark:bg-zinc-800 p-8 rounded-xl shadow-lg text-center">
+              <div class="text-4xl font-bold text-violet-600 dark:text-violet-400">5년</div>
+              <div class="text-zinc-600 dark:text-zinc-400 mt-2">개발 경력</div>
+            </div>
+            <div class="bg-zinc-50 dark:bg-zinc-800 p-8 rounded-xl shadow-lg text-center">
+              <div class="text-4xl font-bold text-violet-600 dark:text-violet-400">30+</div>
+              <div class="text-zinc-600 dark:text-zinc-400 mt-2">만족한 클라이언트</div>
+            </div>
+            <div class="bg-zinc-50 dark:bg-zinc-800 p-8 rounded-xl shadow-lg text-center">
+              <div class="text-4xl font-bold text-violet-600 dark:text-violet-400">8개</div>
+              <div class="text-zinc-600 dark:text-zinc-400 mt-2">주요 기술 스택</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section id="skills" class="py-20 px-4 bg-zinc-50 dark:bg-zinc-950">
+      <div class="max-w-6xl mx-auto">
+        <h2 class="text-4xl font-bold mb-12 text-center">기술 스택</h2>
+
+        <div class="space-y-8 fade-in">
+          <!-- Languages -->
+          <div>
+            <h3 class="text-2xl font-semibold mb-4 text-violet-600 dark:text-violet-400">언어</h3>
+            <div class="flex flex-wrap gap-3">
+              <span class="px-4 py-2 bg-violet-100 dark:bg-violet-900/50 text-violet-700 dark:text-violet-300 rounded-full font-semibold">JavaScript</span>
+              <span class="px-4 py-2 bg-violet-100 dark:bg-violet-900/50 text-violet-700 dark:text-violet-300 rounded-full font-semibold">TypeScript</span>
+              <span class="px-4 py-2 bg-violet-100 dark:bg-violet-900/50 text-violet-700 dark:text-violet-300 rounded-full font-semibold">Python</span>
+              <span class="px-4 py-2 bg-violet-100 dark:bg-violet-900/50 text-violet-700 dark:text-violet-300 rounded-full font-semibold">HTML5</span>
+              <span class="px-4 py-2 bg-violet-100 dark:bg-violet-900/50 text-violet-700 dark:text-violet-300 rounded-full font-semibold">CSS3</span>
+            </div>
+          </div>
+
+          <!-- Frameworks & Libraries -->
+          <div>
+            <h3 class="text-2xl font-semibold mb-4 text-fuchsia-600 dark:text-fuchsia-400">프레임워크 & 라이브러리</h3>
+            <div class="flex flex-wrap gap-3">
+              <span class="px-4 py-2 bg-fuchsia-100 dark:bg-fuchsia-900/50 text-fuchsia-700 dark:text-fuchsia-300 rounded-full font-semibold">React</span>
+              <span class="px-4 py-2 bg-fuchsia-100 dark:bg-fuchsia-900/50 text-fuchsia-700 dark:text-fuchsia-300 rounded-full font-semibold">Vue.js</span>
+              <span class="px-4 py-2 bg-fuchsia-100 dark:bg-fuchsia-900/50 text-fuchsia-700 dark:text-fuchsia-300 rounded-full font-semibold">Node.js</span>
+              <span class="px-4 py-2 bg-fuchsia-100 dark:bg-fuchsia-900/50 text-fuchsia-700 dark:text-fuchsia-300 rounded-full font-semibold">Express</span>
+              <span class="px-4 py-2 bg-fuchsia-100 dark:bg-fuchsia-900/50 text-fuchsia-700 dark:text-fuchsia-300 rounded-full font-semibold">Next.js</span>
+            </div>
+          </div>
+
+          <!-- Tools -->
+          <div>
+            <h3 class="text-2xl font-semibold mb-4 text-cyan-600 dark:text-cyan-400">도구 & 플랫폼</h3>
+            <div class="flex flex-wrap gap-3">
+              <span class="px-4 py-2 bg-cyan-100 dark:bg-cyan-900/50 text-cyan-700 dark:text-cyan-300 rounded-full font-semibold">Git/GitHub</span>
+              <span class="px-4 py-2 bg-cyan-100 dark:bg-cyan-900/50 text-cyan-700 dark:text-cyan-300 rounded-full font-semibold">Docker</span>
+              <span class="px-4 py-2 bg-cyan-100 dark:bg-cyan-900/50 text-cyan-700 dark:text-cyan-300 rounded-full font-semibold">VS Code</span>
+              <span class="px-4 py-2 bg-cyan-100 dark:bg-cyan-900/50 text-cyan-700 dark:text-cyan-300 rounded-full font-semibold">Webpack</span>
+              <span class="px-4 py-2 bg-cyan-100 dark:bg-cyan-900/50 text-cyan-700 dark:text-cyan-300 rounded-full font-semibold">Tailwind CSS</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects" class="py-20 px-4 bg-white dark:bg-zinc-900">
+      <div class="max-w-6xl mx-auto">
+        <h2 class="text-4xl font-bold mb-12 text-center">프로젝트</h2>
+
+        <div class="grid md:grid-cols-2 gap-8 fade-in">
+          <!-- Project Card 1 -->
+          <div class="bg-zinc-50 dark:bg-zinc-800 rounded-xl overflow-hidden shadow-lg hover:shadow-xl transition transform hover:scale-105">
+            <div class="h-48 overflow-hidden">
+              <img src="https://images.unsplash.com/photo-1517694712202-14dd9538aa97?w=500&h=300&fit=crop" alt="웹 디자인 포트폴리오 프로젝트" class="w-full h-full object-cover">
+            </div>
+            <div class="p-6">
+              <h3 class="text-xl font-bold mb-2">웹 디자인 포트폴리오</h3>
+              <p class="text-zinc-600 dark:text-zinc-400 mb-4">
+                현대적인 반응형 포트폴리오 사이트로, Tailwind CSS와 Vanilla JS를 활용하여 개발했습니다. 부드러운 스크롤 애니메이션과 다크모드 지원을 포함합니다.
+              </p>
+              <div class="flex flex-wrap gap-2 mb-4">
+                <span class="text-xs px-3 py-1 bg-violet-100 dark:bg-violet-900/50 text-violet-700 dark:text-violet-300 rounded-full">HTML</span>
+                <span class="text-xs px-3 py-1 bg-violet-100 dark:bg-violet-900/50 text-violet-700 dark:text-violet-300 rounded-full">CSS</span>
+                <span class="text-xs px-3 py-1 bg-violet-100 dark:bg-violet-900/50 text-violet-700 dark:text-violet-300 rounded-full">JavaScript</span>
+              </div>
+              <div class="flex gap-3">
+                <a href="#" class="flex-1 px-4 py-2 bg-violet-600 text-white rounded-lg text-sm font-semibold hover:bg-violet-700 transition text-center">
+                  GitHub
+                </a>
+                <a href="#" class="flex-1 px-4 py-2 border-2 border-violet-600 text-violet-600 dark:text-violet-400 rounded-lg text-sm font-semibold hover:bg-violet-50 dark:hover:bg-zinc-700 transition text-center">
+                  Demo
+                </a>
+              </div>
+            </div>
+          </div>
+
+          <!-- Project Card 2 -->
+          <div class="bg-zinc-50 dark:bg-zinc-800 rounded-xl overflow-hidden shadow-lg hover:shadow-xl transition transform hover:scale-105">
+            <div class="h-48 overflow-hidden">
+              <img src="https://images.pexels.com/photos/699122/pexels-photo-699122.jpeg?auto=compress&cs=tinysrgb&w=500&h=300" alt="모바일 앱 프로젝트" class="w-full h-full object-cover">
+            </div>
+            <div class="p-6">
+              <h3 class="text-xl font-bold mb-2">모바일 앱 프로젝트</h3>
+              <p class="text-zinc-600 dark:text-zinc-400 mb-4">
+                React Native를 활용한 크로스 플랫폼 모바일 애플리케이션입니다. iOS와 Android 모두에서 원활하게 작동하며 직관적인 UI를 제공합니다.
+              </p>
+              <div class="flex flex-wrap gap-2 mb-4">
+                <span class="text-xs px-3 py-1 bg-fuchsia-100 dark:bg-fuchsia-900/50 text-fuchsia-700 dark:text-fuchsia-300 rounded-full">React Native</span>
+                <span class="text-xs px-3 py-1 bg-fuchsia-100 dark:bg-fuchsia-900/50 text-fuchsia-700 dark:text-fuchsia-300 rounded-full">JavaScript</span>
+                <span class="text-xs px-3 py-1 bg-fuchsia-100 dark:bg-fuchsia-900/50 text-fuchsia-700 dark:text-fuchsia-300 rounded-full">Firebase</span>
+              </div>
+              <div class="flex gap-3">
+                <a href="#" class="flex-1 px-4 py-2 bg-violet-600 text-white rounded-lg text-sm font-semibold hover:bg-violet-700 transition text-center">
+                  GitHub
+                </a>
+                <a href="#" class="flex-1 px-4 py-2 border-2 border-violet-600 text-violet-600 dark:text-violet-400 rounded-lg text-sm font-semibold hover:bg-violet-50 dark:hover:bg-zinc-700 transition text-center">
+                  Demo
+                </a>
+              </div>
+            </div>
+          </div>
+
+          <!-- Project Card 3 -->
+          <div class="bg-zinc-50 dark:bg-zinc-800 rounded-xl overflow-hidden shadow-lg hover:shadow-xl transition transform hover:scale-105">
+            <div class="h-48 overflow-hidden">
+              <img src="https://images.unsplash.com/photo-1552664730-d307ca884978?w=500&h=300&fit=crop" alt="실시간 채팅 플랫폼 프로젝트" class="w-full h-full object-cover">
+            </div>
+            <div class="p-6">
+              <h3 class="text-xl font-bold mb-2">실시간 채팅 플랫폼</h3>
+              <p class="text-zinc-600 dark:text-zinc-400 mb-4">
+                Node.js와 Socket.io를 활용한 실시간 채팅 애플리케이션입니다. MongoDB를 데이터베이스로 사용하며, 안정적인 메시징 시스템을 제공합니다.
+              </p>
+              <div class="flex flex-wrap gap-2 mb-4">
+                <span class="text-xs px-3 py-1 bg-cyan-100 dark:bg-cyan-900/50 text-cyan-700 dark:text-cyan-300 rounded-full">Node.js</span>
+                <span class="text-xs px-3 py-1 bg-cyan-100 dark:bg-cyan-900/50 text-cyan-700 dark:text-cyan-300 rounded-full">Socket.io</span>
+                <span class="text-xs px-3 py-1 bg-cyan-100 dark:bg-cyan-900/50 text-cyan-700 dark:text-cyan-300 rounded-full">MongoDB</span>
+              </div>
+              <div class="flex gap-3">
+                <a href="#" class="flex-1 px-4 py-2 bg-violet-600 text-white rounded-lg text-sm font-semibold hover:bg-violet-700 transition text-center">
+                  GitHub
+                </a>
+                <a href="#" class="flex-1 px-4 py-2 border-2 border-violet-600 text-violet-600 dark:text-violet-400 rounded-lg text-sm font-semibold hover:bg-violet-50 dark:hover:bg-zinc-700 transition text-center">
+                  Demo
+                </a>
+              </div>
+            </div>
+          </div>
+
+          <!-- Project Card 4 -->
+          <div class="bg-zinc-50 dark:bg-zinc-800 rounded-xl overflow-hidden shadow-lg hover:shadow-xl transition transform hover:scale-105">
+            <div class="h-48 overflow-hidden">
+              <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=500&h=300&fit=crop" alt="데이터 분석 대시보드 프로젝트" class="w-full h-full object-cover">
+            </div>
+            <div class="p-6">
+              <h3 class="text-xl font-bold mb-2">데이터 분석 대시보드</h3>
+              <p class="text-zinc-600 dark:text-zinc-400 mb-4">
+                React와 Chart.js를 활용한 데이터 시각화 대시보드입니다. 실시간 데이터 업데이트와 인터랙티브 차트를 제공하며, 반응형 디자인을 갖추고 있습니다.
+              </p>
+              <div class="flex flex-wrap gap-2 mb-4">
+                <span class="text-xs px-3 py-1 bg-emerald-100 dark:bg-emerald-900/50 text-emerald-700 dark:text-emerald-300 rounded-full">React</span>
+                <span class="text-xs px-3 py-1 bg-emerald-100 dark:bg-emerald-900/50 text-emerald-700 dark:text-emerald-300 rounded-full">Chart.js</span>
+                <span class="text-xs px-3 py-1 bg-emerald-100 dark:bg-emerald-900/50 text-emerald-700 dark:text-emerald-300 rounded-full">Axios</span>
+              </div>
+              <div class="flex gap-3">
+                <a href="#" class="flex-1 px-4 py-2 bg-violet-600 text-white rounded-lg text-sm font-semibold hover:bg-violet-700 transition text-center">
+                  GitHub
+                </a>
+                <a href="#" class="flex-1 px-4 py-2 border-2 border-violet-600 text-violet-600 dark:text-violet-400 rounded-lg text-sm font-semibold hover:bg-violet-50 dark:hover:bg-zinc-700 transition text-center">
+                  Demo
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Experience Section -->
+    <section id="experience" class="py-20 px-4 bg-zinc-50 dark:bg-zinc-950">
+      <div class="max-w-4xl mx-auto">
+        <h2 class="text-4xl font-bold mb-12 text-center">경력</h2>
+
+        <div class="space-y-8 fade-in">
+          <!-- Experience Item 1 -->
+          <div class="flex gap-6">
+            <div class="flex flex-col items-center">
+              <div class="w-12 h-12 bg-violet-600 dark:bg-violet-500 rounded-full flex items-center justify-center text-white font-bold">
+                1
+              </div>
+              <div class="w-1 h-32 bg-violet-200 dark:bg-violet-700 mt-2"></div>
+            </div>
+            <div class="pb-8">
+              <h3 class="text-2xl font-bold">시니어 프론트엔드 개발자</h3>
+              <p class="text-violet-600 dark:text-violet-400 font-semibold">Tech Company Inc. • 2021 - 현재</p>
+              <p class="text-zinc-600 dark:text-zinc-400 mt-2">3년</p>
+              <ul class="list-disc list-inside mt-4 space-y-2 text-zinc-700 dark:text-zinc-300">
+                <li>React와 TypeScript를 사용한 대규모 프로젝트 개발 및 유지보수</li>
+                <li>팀 리드로서 코드 리뷰 및 베스트 프랙티스 정의</li>
+                <li>성능 최적화로 페이지 로딩 속도 40% 단축</li>
+              </ul>
+            </div>
+          </div>
+
+          <!-- Experience Item 2 -->
+          <div class="flex gap-6">
+            <div class="flex flex-col items-center">
+              <div class="w-12 h-12 bg-violet-600 dark:bg-violet-500 rounded-full flex items-center justify-center text-white font-bold">
+                2
+              </div>
+              <div class="w-1 h-32 bg-violet-200 dark:bg-violet-700 mt-2"></div>
+            </div>
+            <div class="pb-8">
+              <h3 class="text-2xl font-bold">프론트엔드 개발자</h3>
+              <p class="text-violet-600 dark:text-violet-400 font-semibold">Startup Studio • 2019 - 2021</p>
+              <p class="text-zinc-600 dark:text-zinc-400 mt-2">2년</p>
+              <ul class="list-disc list-inside mt-4 space-y-2 text-zinc-700 dark:text-zinc-300">
+                <li>Vue.js를 사용한 여러 웹 애플리케이션 개발</li>
+                <li>RESTful API 통신 및 상태 관리(Vuex) 구현</li>
+                <li>모바일 반응형 디자인으로 사용자 경험 개선</li>
+              </ul>
+            </div>
+          </div>
+
+          <!-- Experience Item 3 -->
+          <div class="flex gap-6">
+            <div class="flex flex-col items-center">
+              <div class="w-12 h-12 bg-violet-600 dark:bg-violet-500 rounded-full flex items-center justify-center text-white font-bold">
+                3
+              </div>
+            </div>
+            <div>
+              <h3 class="text-2xl font-bold">주니어 웹 개발자</h3>
+              <p class="text-violet-600 dark:text-violet-400 font-semibold">Web Agency Co. • 2018 - 2019</p>
+              <p class="text-zinc-600 dark:text-zinc-400 mt-2">1년</p>
+              <ul class="list-disc list-inside mt-4 space-y-2 text-zinc-700 dark:text-zinc-300">
+                <li>HTML, CSS, JavaScript를 사용한 정적 웹사이트 개발</li>
+                <li>jQuery를 활용한 인터랙티브 기능 구현</li>
+                <li>다양한 브라우저 호환성 테스트 및 최적화</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="py-20 px-4 bg-white dark:bg-zinc-900">
+      <div class="max-w-4xl mx-auto">
+        <h2 class="text-4xl font-bold mb-12 text-center">연락하기</h2>
+
+        <!-- Email -->
+        <div class="text-center mb-12 fade-in">
+          <p class="text-xl text-zinc-600 dark:text-zinc-400 mb-4">이메일로 직접 연락하세요</p>
+          <a href="mailto:dev@example.com" class="text-3xl font-bold text-violet-600 dark:text-violet-400 hover:underline">
+            dev@example.com
+          </a>
+        </div>
+
+        <!-- SNS Links Cards -->
+        <div class="grid md:grid-cols-5 gap-6 mb-12 fade-in">
+          <a href="https://github.com" target="_blank" rel="noopener" class="group bg-zinc-50 dark:bg-zinc-800 p-6 rounded-xl text-center hover:shadow-2xl transition transform hover:scale-110">
+            <div class="w-14 h-14 mx-auto mb-3 bg-gradient-to-br from-zinc-700 to-zinc-900 rounded-full flex items-center justify-center group-hover:scale-125 transition">
+              <svg class="w-7 h-7 text-white" fill="currentColor" viewBox="0 0 24 24">
+                <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v 3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
+              </svg>
+            </div>
+            <h3 class="font-bold mb-1 text-zinc-900 dark:text-zinc-100">GitHub</h3>
+            <p class="text-sm text-zinc-600 dark:text-zinc-400">코드 저장소</p>
+          </a>
+
+          <a href="https://youtube.com" target="_blank" rel="noopener" class="group bg-zinc-50 dark:bg-zinc-800 p-6 rounded-xl text-center hover:shadow-2xl transition transform hover:scale-110">
+            <div class="w-14 h-14 mx-auto mb-3 bg-gradient-to-br from-red-500 to-red-700 rounded-full flex items-center justify-center group-hover:scale-125 transition">
+              <svg class="w-7 h-7 text-white" fill="currentColor" viewBox="0 0 24 24">
+                <path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/>
+              </svg>
+            </div>
+            <h3 class="font-bold mb-1 text-zinc-900 dark:text-zinc-100">YouTube</h3>
+            <p class="text-sm text-zinc-600 dark:text-zinc-400">튜토리얼 영상</p>
+          </a>
+
+          <a href="https://instagram.com" target="_blank" rel="noopener" class="group bg-zinc-50 dark:bg-zinc-800 p-6 rounded-xl text-center hover:shadow-2xl transition transform hover:scale-110">
+            <div class="w-14 h-14 mx-auto mb-3 bg-gradient-to-br from-fuchsia-500 via-pink-500 to-orange-400 rounded-full flex items-center justify-center group-hover:scale-125 transition">
+              <svg class="w-7 h-7 text-white" fill="currentColor" viewBox="0 0 24 24">
+                <path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm0 2.25c2.697 0 3.013.01 4.077.059 1.063.049 1.79.218 2.427.465.637.247 1.181.578 1.71 1.107.53.529.86 1.073 1.107 1.71.247.637.416 1.364.465 2.427.049 1.064.059 1.38.059 4.077 0 2.697-.01 3.013-.059 4.077-.049 1.063-.218 1.79-.465 2.427-.247.637-.578 1.181-1.107 1.71-.529.53-1.073.86-1.71 1.107-.637.247-1.364.416-2.427.465-1.064.049-1.38.059-4.077.059-2.697 0-3.013-.01-4.077-.059-1.063-.049-1.79-.218-2.427-.465-.637-.247-1.181-.578-1.71-1.107-.53-.529-.86-1.073-1.107-1.71-.247-.637-.416-1.364-.465-2.427C2.26 15.013 2.25 14.697 2.25 12c0-2.697.01-3.013.059-4.077.049-1.063.218-1.79.465-2.427.247-.637.578-1.181 1.107-1.71.529-.53 1.073-.86 1.71-1.107.637-.247 1.364-.416 2.427-.465 1.064-.049 1.38-.059 4.077-.059zm0 3.834a5.916 5.916 0 100 11.832 5.916 5.916 0 000-11.832zm0 9.75a3.834 3.834 0 110-7.668 3.834 3.834 0 010 7.668zm7.668-10.034a1.384 1.384 0 11-2.768 0 1.384 1.384 0 012.768 0z"/>
+              </svg>
+            </div>
+            <h3 class="font-bold mb-1 text-zinc-900 dark:text-zinc-100">Instagram</h3>
+            <p class="text-sm text-zinc-600 dark:text-zinc-400">일상 공유</p>
+          </a>
+
+          <a href="https://linkedin.com" target="_blank" rel="noopener" class="group bg-zinc-50 dark:bg-zinc-800 p-6 rounded-xl text-center hover:shadow-2xl transition transform hover:scale-110">
+            <div class="w-14 h-14 mx-auto mb-3 bg-gradient-to-br from-blue-500 to-blue-700 rounded-full flex items-center justify-center group-hover:scale-125 transition">
+              <svg class="w-7 h-7 text-white" fill="currentColor" viewBox="0 0 24 24">
+                <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.475-2.236-1.986-2.236-1.081 0-1.722.722-2.004 1.418-.103.249-.129.597-.129.946v5.441h-3.554s.05-8.81 0-9.728h3.554v1.375c.43-.664 1.199-1.61 2.92-1.61 2.134 0 3.732 1.39 3.732 4.377v5.586zM5.337 9.433c-1.144 0-1.915-.759-1.915-1.71 0-.955.77-1.71 1.954-1.71 1.184 0 1.915.755 1.94 1.71 0 .951-.756 1.71-1.979 1.71zm1.581 11.019H3.716V9.724h3.202v10.728zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
+              </svg>
+            </div>
+            <h3 class="font-bold mb-1 text-zinc-900 dark:text-zinc-100">LinkedIn</h3>
+            <p class="text-sm text-zinc-600 dark:text-zinc-400">경력 정보</p>
+          </a>
+
+          <a href="https://twitter.com" target="_blank" rel="noopener" class="group bg-zinc-50 dark:bg-zinc-800 p-6 rounded-xl text-center hover:shadow-2xl transition transform hover:scale-110">
+            <div class="w-14 h-14 mx-auto mb-3 bg-gradient-to-br from-sky-400 to-cyan-500 rounded-full flex items-center justify-center group-hover:scale-125 transition">
+              <svg class="w-7 h-7 text-white" fill="currentColor" viewBox="0 0 24 24">
+                <path d="M23.953 4.57a10 10 0 01-2.825.775 4.958 4.958 0 002.163-2.723c-.951.555-2.005.959-3.127 1.184a4.92 4.92 0 00-8.384 4.482C7.69 8.095 4.067 6.13 1.64 3.162a4.822 4.822 0 00-.666 2.475c0 1.71.87 3.213 2.188 4.096a4.904 4.904 0 01-2.228-.616v.06a4.923 4.923 0 003.946 4.827 4.996 4.996 0 01-2.212.085 4.936 4.936 0 004.604 3.417a9.867 9.867 0 01-6.102 2.105c-.39 0-.779-.023-1.17-.067a14.028 14.028 0 007.557 2.209c9.053 0 13.998-7.496 13.998-13.985 0-.21 0-.42-.015-.63A9.935 9.935 0 0024 4.59z"/>
+              </svg>
+            </div>
+            <h3 class="font-bold mb-1 text-zinc-900 dark:text-zinc-100">Twitter</h3>
+            <p class="text-sm text-zinc-600 dark:text-zinc-400">최신 소식</p>
+          </a>
+        </div>
+
+        <!-- CTA Button -->
+        <div class="text-center fade-in">
+          <a href="mailto:dev@example.com" class="inline-block px-8 py-3 bg-violet-600 text-white rounded-lg font-semibold hover:bg-violet-700 transition">
+            이메일 보내기
+          </a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer class="bg-zinc-900 dark:bg-zinc-950 text-white py-12 px-4">
+    <div class="max-w-6xl mx-auto">
+      <div class="grid md:grid-cols-3 gap-8 mb-8">
+        <!-- Logo -->
+        <div>
+          <div class="text-2xl font-bold bg-gradient-to-r from-violet-400 to-fuchsia-400 bg-clip-text text-transparent mb-2">
+            Portfolio
+          </div>
+          <p class="text-zinc-400">현대적이고 반응형 웹 이력서</p>
+        </div>
+
+        <!-- Quick Links -->
+        <div>
+          <h4 class="font-bold mb-4">빠른 링크</h4>
+          <ul class="space-y-2 text-zinc-400">
+            <li><a href="#hero" class="hover:text-violet-400 transition">홈</a></li>
+            <li><a href="#about" class="hover:text-violet-400 transition">소개</a></li>
+            <li><a href="#projects" class="hover:text-violet-400 transition">프로젝트</a></li>
+            <li><a href="#contact" class="hover:text-violet-400 transition">연락</a></li>
+          </ul>
+        </div>
+
+        <!-- Social -->
+        <div>
+          <h4 class="font-bold mb-4">팔로우</h4>
+          <div class="flex gap-4">
+            <a href="https://github.com" target="_blank" class="text-zinc-400 hover:text-violet-400 transition">GitHub</a>
+            <a href="https://linkedin.com" target="_blank" class="text-zinc-400 hover:text-violet-400 transition">LinkedIn</a>
+            <a href="https://twitter.com" target="_blank" class="text-zinc-400 hover:text-violet-400 transition">Twitter</a>
+          </div>
+        </div>
+      </div>
+
+      <hr class="border-zinc-700 mb-8">
+
+      <!-- Copyright -->
+      <div class="text-center text-zinc-400">
+        <p>&copy; 2024 Portfolio. All rights reserved.</p>
+      </div>
+
+      <!-- Back to Top -->
+      <div class="text-center mt-8">
+        <a href="#hero" id="back-to-top" class="inline-block p-3 bg-violet-600 hover:bg-violet-700 rounded-full transition">
+          <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 20 20">
+            <path fill-rule="evenodd" d="M3.293 9.707a1 1 0 010-1.414l6-6a1 1 0 111.414 1.414L5.414 9h12.172a1 1 0 110 2H5.414l5.293 5.293a1 1 0 11-1.414 1.414l-6-6z" clip-rule="evenodd"></path>
+          </svg>
+        </a>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/main.js"></script>
+</body>
+</html>

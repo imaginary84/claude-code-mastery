@@ -1,0 +1,202 @@
+/* 커스텀 스크롤바 */
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #818cf8;
+  border-radius: 5px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #6366f1;
+}
+
+/* Dark mode scrollbar */
+.dark ::-webkit-scrollbar-thumb {
+  background: #fb923c;
+}
+
+.dark ::-webkit-scrollbar-thumb:hover {
+  background: #f97316;
+}
+
+/* 페이드인 애니메이션 */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.fade-in {
+  animation: fadeIn 0.6s ease-in-out;
+}
+
+/* 섹션 등장 애니메이션 */
+.section-animate {
+  opacity: 0;
+  transform: translateY(30px);
+  animation: fadeIn 0.8s ease-out forwards;
+}
+
+/* 스무스 스크롤 */
+html {
+  scroll-behavior: smooth;
+}
+
+/* 헤더 스타일 */
+#header {
+  transition: all 0.3s ease;
+}
+
+#header.scrolled {
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(10px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.dark #header.scrolled {
+  background: rgba(30, 58, 138, 0.95);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+}
+
+/* 모바일 메뉴 스타일 */
+#mobile-menu {
+  animation: slideDown 0.3s ease-out;
+}
+
+@keyframes slideDown {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* 활성 네비게이션 링크 */
+.nav-link {
+  position: relative;
+  font-weight: 500;
+}
+
+.nav-link::after {
+  content: '';
+  position: absolute;
+  bottom: -4px;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background: linear-gradient(to right, #fb923c, #f97316);
+  transition: width 0.3s ease;
+}
+
+.dark .nav-link::after {
+  background: linear-gradient(to right, #fb923c, #f97316);
+}
+
+.nav-link:hover::after,
+.nav-link.active::after {
+  width: 100%;
+}
+
+/* 버튼 호버 효과 */
+button, a {
+  transition: all 0.3s ease;
+}
+
+/* 카드 호버 효과 */
+.hover\:shadow-xl {
+  transition: box-shadow 0.3s ease, transform 0.3s ease;
+}
+
+/* 텍스트 선택 스타일 */
+::selection {
+  background: #4f46e5;
+  color: white;
+}
+
+.dark ::selection {
+  background: #fb923c;
+  color: #1e3a8a;
+}
+
+/* 프로그레스 바 */
+.progress-bar {
+  width: 100%;
+  height: 6px;
+  background: #e2e8f0;
+  border-radius: 3px;
+  overflow: hidden;
+}
+
+.dark .progress-bar {
+  background: #1e3a8a;
+}
+
+.progress-bar-fill {
+  height: 100%;
+  background: linear-gradient(to right, #4f46e5, #9333ea);
+  border-radius: 3px;
+  transition: width 0.6s ease;
+}
+
+.dark .progress-bar-fill {
+  background: linear-gradient(to right, #fb923c, #f97316);
+}
+
+/* 타이핑 애니메이션 (선택사항) */
+@keyframes typing {
+  from {
+    width: 0;
+  }
+}
+
+@keyframes blink {
+  50% {
+    border-right-color: transparent;
+  }
+}
+
+.typing {
+  overflow: hidden;
+  border-right: 3px solid #4f46e5;
+  white-space: nowrap;
+  animation: typing 3.5s steps(40, end), blink 0.75s step-end infinite;
+}
+
+.dark .typing {
+  border-right: 3px solid #fb923c;
+}
+
+/* 링크 포커스 스타일 */
+a:focus,
+button:focus {
+  outline: none;
+}
+
+/* 다크모드 전환 애니메이션 */
+body {
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+/* SVG 아이콘 스타일 */
+svg {
+  transition: color 0.3s ease;
+}
+
+/* 버튼 활성 상태 */
+button:active {
+  transform: scale(0.98);
+}
