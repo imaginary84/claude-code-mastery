@@ -1,3 +1,11 @@
 {
+    "outputStyle" : "Explanatory",
+    "performance" : {
+        "allow":[
+            "bash"
+        ],
+        "deny":[],
+        "ask":[]
+    },
     "plansDirectory": ".claude/plans/"
 }
