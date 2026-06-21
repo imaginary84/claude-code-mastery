@@ -2,7 +2,7 @@
     "outputStyle" : "Explanatory",
     "performance" : {
         "allow":[
-            "bash"
+            "Bash"
         ],
         "deny":[],
         "ask":[]
